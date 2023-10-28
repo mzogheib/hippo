@@ -1,5 +1,10 @@
 function Home(): JSX.Element {
-  return <div>Home</div>;
+  return (
+    <div>
+      <h1>Home</h1>
+      <div>Publicly accessible.</div>
+    </div>
+  );
 }
 
 export default Home;
