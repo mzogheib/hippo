@@ -1,3 +1,4 @@
+// TODO: confirm how to use the tsconfig from /packages
 {
   "compilerOptions": {
     "paths": { "react": ["./node_modules/@types/react"] },
