@@ -1,20 +1,14 @@
-import AppHeading from "./components/AppHeading";
-import NavBar from "./components/NavBar";
-import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./routes/home";
 import Profile from "./routes/profile";
+import ErrorPage from "./routes/ErrorPage";
+import AppLayout from "./AppLayout";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <AppHeading />
-        <NavBar />
-        <Outlet />
-      </div>
-    ),
-    errorElement: <div>404 - not found</div>,
+    element: <AppLayout />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/home",
