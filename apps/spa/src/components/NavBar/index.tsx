@@ -1,9 +1,11 @@
+import { Link } from "react-router-dom";
+
 function NavBar(): JSX.Element {
   return (
     <nav>
-      <a href="/home">Home</a>
+      <Link to="/home">Home</Link>
       &nbsp;
-      <a href="/profile">Profile</a>
+      <Link to="/profile">Profile</Link>
     </nav>
   );
 }
