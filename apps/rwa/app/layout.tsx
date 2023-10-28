@@ -1,6 +1,7 @@
 import type { PropsWithChildren } from "react";
 import NavBar from "./components/NavBar";
 import "./globals.css";
+import AppHeading from "./components/AppHeading";
 
 export default function RootLayout({
   children,
@@ -8,6 +9,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <AppHeading />
         <NavBar />
         {children}
       </body>

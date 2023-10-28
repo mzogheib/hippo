@@ -1,7 +1,7 @@
 function Home(): JSX.Element {
   return (
     <div>
-      <h1>Home</h1>
+      <h2>Home</h2>
       <div>Publicly accessible.</div>
     </div>
   );
