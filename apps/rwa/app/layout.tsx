@@ -8,6 +8,10 @@ export default function RootLayout({
 }: PropsWithChildren): JSX.Element {
   return (
     <html lang="en">
+      <head>
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Regular web app - Next.js</title>
+      </head>
       <body>
         <AppHeading />
         <NavBar />
