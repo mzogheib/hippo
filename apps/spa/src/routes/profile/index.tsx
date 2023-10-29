@@ -1,5 +1,5 @@
+import { getProfile } from "profile-service";
 import { useEffect, useState } from "react";
-import { getProfile } from "../../services/profile";
 
 function Profile(): JSX.Element {
   const [profileData, setProfileData] = useState();
