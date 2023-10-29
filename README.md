@@ -2,7 +2,7 @@
 
 Adventures in multi-app development.
 
-## Contents
+## 📜 Contents
 
 This project was created with [Turborepo](https://turbo.build/) and includes the following:
 
@@ -23,7 +23,7 @@ This project was created with [Turborepo](https://turbo.build/) and includes the
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
-# Installation
+## 📥 Installation
 
 1. Install [`pnpm`](https://pnpm.io/)
 2. Clone the repo
@@ -34,7 +34,7 @@ cd hippo
 pnpm i
 ```
 
-# Usage
+## 🛠️ Usage
 
 ### Build
 
