@@ -57,6 +57,9 @@ importers:
       next:
         specifier: ^13.4.19
         version: 13.4.19(react-dom@18.2.0)(react@18.2.0)
+      profile-service:
+        specifier: workspace:*
+        version: link:../../packages/profile-service
       react:
         specifier: ^18.2.0
         version: 18.2.0
