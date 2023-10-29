@@ -1,0 +1,12 @@
+{
+  "name": "profile-service",
+  "version": "0.0.0",
+  "private": true,
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsc --watch"
+  },
+  "dependencies": {
+    "typescript": "^5.2.2"
+  }
+}
