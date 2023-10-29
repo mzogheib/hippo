@@ -1,9 +1,7 @@
-import type { Profile } from "profile-service";
+import { getProfile } from "../api/profile/route";
 
 async function ProfilePage(): Promise<JSX.Element> {
-  const response = await fetch("http://localhost:3000/api/profile");
-
-  const data = (await response.json()) as Profile;
+  const data = await getProfile();
 
   return (
     <div>
