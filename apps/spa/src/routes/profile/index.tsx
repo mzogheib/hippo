@@ -1,8 +1,8 @@
-import { getProfile } from "profile-service";
+import { Profile, getProfile } from "profile-service";
 import { useEffect, useState } from "react";
 
-function Profile(): JSX.Element {
-  const [profileData, setProfileData] = useState();
+function ProfileRoute(): JSX.Element {
+  const [profileData, setProfileData] = useState<Profile>();
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
@@ -39,4 +39,4 @@ function Profile(): JSX.Element {
   );
 }
 
-export default Profile;
+export default ProfileRoute;

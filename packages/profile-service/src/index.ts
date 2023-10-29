@@ -1,5 +1,10 @@
 const baseUrl = "http://localhost:4000";
 
+export type Profile = {
+  name: string;
+  address: string;
+};
+
 export const getProfile = async () => {
   const response = await fetch(`${baseUrl}/profile`);
 
@@ -9,7 +14,7 @@ export const getProfile = async () => {
 
   try {
     const data = await response.json();
-    return data;
+    return data as Profile;
   } catch {
     throw new Error("Error getting profile - json");
   }
