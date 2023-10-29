@@ -5,7 +5,9 @@ const app = express();
 const port = process.env.PORT || 8000;
 
 app.get("/profile", (_, res) => {
-  res.send("Here is your profile");
+  res
+    .status(200)
+    .send({ name: "Hippo Fan", address: "123 Hippopotimus Boulevard" });
 });
 
 app.listen(port, () => {
