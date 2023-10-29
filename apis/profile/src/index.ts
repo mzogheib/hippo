@@ -2,7 +2,7 @@ import express from "express";
 
 const app = express();
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 4002;
 
 app.get("/profile", (_, res) => {
   res
@@ -11,5 +11,5 @@ app.get("/profile", (_, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}`);
+  console.log(`Profile API listening at http://localhost:${port}`);
 });
