@@ -8,7 +8,9 @@ const port = process.env.PORT || 4002;
 app.use(cors({ origin: "*" }));
 
 app.get("/profile", (_, res) => {
-  res.send({ name: "Hippo Fan", address: "123 Hippopotimus Boulevard" });
+  res
+    .status(200)
+    .send({ name: "Hippo Fan", address: "123 Hippopotimus Boulevard" });
 });
 
 app.listen(port, () => {
