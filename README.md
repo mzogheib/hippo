@@ -2,7 +2,7 @@
 
 Adventures in multi-app development.
 
-## Apps and Packages
+## Contents
 
 This project was created with [Turborepo](https://turbo.build/) and includes the following:
 
