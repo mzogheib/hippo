@@ -1,3 +1,4 @@
+import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 import { getProfile } from "../api/profile/route";
 
 async function ProfilePage(): Promise<JSX.Element> {
@@ -12,4 +13,4 @@ async function ProfilePage(): Promise<JSX.Element> {
   );
 }
 
-export default ProfilePage;
+export default withPageAuthRequired(ProfilePage);
