@@ -4,11 +4,15 @@ import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
 import { getProfile as getProfile_ } from "profile-service";
 
+interface ErrorResponse {
+  status: number;
+}
+
 export const GET = withApiAuthRequired(
-  async (): Promise<NextResponse<Profile | undefined>> => {
+  async (): Promise<NextResponse<Profile | ErrorResponse>> => {
     const { accessToken } = await getAccessToken();
 
-    if (!accessToken) return NextResponse.json(undefined);
+    if (!accessToken) return NextResponse.json({ status: 401 });
 
     const data = await getProfile_({ accessToken });
 
