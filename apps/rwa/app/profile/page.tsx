@@ -13,4 +13,4 @@ async function ProfilePage(): Promise<JSX.Element> {
   );
 }
 
-export default withPageAuthRequired(ProfilePage);
+export default withPageAuthRequired(ProfilePage, { returnTo: "/profile" });
