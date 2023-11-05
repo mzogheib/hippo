@@ -5,11 +5,17 @@ export type Profile = {
   address: string;
 };
 
-export const getProfile = async () => {
-  const response = await fetch(`${baseUrl}/profile`);
+type Params = {
+  accessToken: string;
+};
+
+export const getProfile = async ({ accessToken }: Params) => {
+  const response = await fetch(`${baseUrl}/profile`, {
+    headers: { authorization: `Bearer ${accessToken}` },
+  });
 
   if (!response.ok || response.status >= 400) {
-    throw new Error("Error getting profile - http");
+    throw new Error(`Error getting profile - http status: ${response.status}`);
   }
 
   try {
