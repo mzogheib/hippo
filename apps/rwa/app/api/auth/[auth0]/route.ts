@@ -6,7 +6,7 @@ export const GET = handleAuth({
   login: handleLogin({
     authorizationParams: {
       audience: "http://localhost:4000",
-      scope: "openid read:profile",
+      scope: "openid profile read:profile",
     },
   }),
   signup: handleLogin({ authorizationParams: { screen_hint: "signup" } }),

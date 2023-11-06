@@ -33,7 +33,7 @@ function AppLayout(): JSX.Element {
       authorizationParams={{
         redirect_uri: window.location.href,
         audience: "http://localhost:4000",
-        scope: "read:profile",
+        scope: "openid profile read:profile",
       }}
       onRedirectCallback={handleAuthRedirectCallback}
     >
