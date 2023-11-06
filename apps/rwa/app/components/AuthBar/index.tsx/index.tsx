@@ -14,7 +14,7 @@ function AuthenticatedContent({
     <>
       <span>Hi, {user?.nickname || "friend"}</span>
       &nbsp;
-      <a href="/api/auth/logout">Log out</a>;
+      <a href="/api/auth/logout">Log out</a>
     </>
   );
 }
