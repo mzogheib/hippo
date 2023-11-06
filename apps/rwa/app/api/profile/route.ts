@@ -5,6 +5,7 @@ import { cookies } from "next/headers";
 import { getProfile as getProfile_ } from "profile-service";
 
 interface ErrorResponse {
+  code: string;
   status: number;
 }
 
@@ -12,11 +13,21 @@ export const GET = withApiAuthRequired(
   async (): Promise<NextResponse<Profile | ErrorResponse>> => {
     const { accessToken } = await getAccessToken();
 
-    if (!accessToken) return NextResponse.json({ status: 401 });
+    if (!accessToken)
+      return NextResponse.json({ code: "unauthorized", status: 401 });
 
-    const data = await getProfile_({ accessToken });
+    try {
+      const data = await getProfile_({ accessToken });
 
-    return NextResponse.json(data);
+      return NextResponse.json(data);
+    } catch (err) {
+      if (err instanceof Error) {
+        const errorPayload = JSON.parse(err.message) as ErrorResponse;
+        return NextResponse.json(errorPayload);
+      }
+
+      return NextResponse.json({ code: "unkown", status: 500 });
+    }
   },
 );
 

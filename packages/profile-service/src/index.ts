@@ -5,6 +5,26 @@ export type Profile = {
   address: string;
 };
 
+const makeErrorPayload = (status: number) => {
+  switch (status) {
+    case 401:
+      return {
+        code: "profile-service-unauthorized",
+        status,
+      };
+    case 403:
+      return {
+        code: "profile-service-forbidden",
+        status,
+      };
+    default:
+      return {
+        code: "profile-service-unknown",
+        status,
+      };
+  }
+};
+
 type Params = {
   accessToken: string;
 };
@@ -15,13 +35,13 @@ export const getProfile = async ({ accessToken }: Params) => {
   });
 
   if (!response.ok || response.status >= 400) {
-    throw new Error(`Error getting profile - http status: ${response.status}`);
+    throw new Error(JSON.stringify(makeErrorPayload(response.status)));
   }
 
   try {
     const data = await response.json();
     return data as Profile;
   } catch {
-    throw new Error("Error getting profile - json");
+    throw new Error(JSON.stringify(makeErrorPayload(500)));
   }
 };
