@@ -10,7 +10,7 @@ const checkJwt = auth({
   tokenSigningAlg: "RS256",
 });
 
-const checkScopes = requiredScopes("read:profile");
+const checkScopes = requiredScopes("read:all_data");
 
 const app = express();
 
