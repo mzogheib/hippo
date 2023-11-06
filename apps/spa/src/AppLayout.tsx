@@ -25,6 +25,15 @@ function AppLayout(): JSX.Element {
         audience: "http://localhost:4000",
         scope: "read:profile",
       }}
+      onRedirectCallback={(appState) => {
+        if (appState?.returnTo) {
+          navigate(appState.returnTo);
+          return;
+        }
+
+        // Removes the code and state query params
+        navigate("/home");
+      }}
     >
       <AppHeading />
       <AuthBar />
