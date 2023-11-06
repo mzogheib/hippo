@@ -1,4 +1,4 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { Profile, getProfile } from "profile-service";
 import { useEffect, useState } from "react";
 
@@ -50,4 +50,6 @@ function ProfileRoute(): JSX.Element {
   );
 }
 
-export default ProfileRoute;
+export default withAuthenticationRequired(ProfileRoute, {
+  onRedirecting: () => <div>Loading...</div>,
+});
