@@ -13,13 +13,7 @@ function AuthenticatedContent({
     <>
       <span>Hi, {user.nickname || "friend"}</span>
       &nbsp;
-      <button
-        onClick={() =>
-          logout({ logoutParams: { returnTo: window.location.href } })
-        }
-      >
-        Log out
-      </button>
+      <button onClick={() => logout()}>Log out</button>
     </>
   );
 }
