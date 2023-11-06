@@ -1,9 +1,22 @@
 "use client";
 
+import type { UserContext } from "@auth0/nextjs-auth0/client";
 import { useUser } from "@auth0/nextjs-auth0/client";
 
-function AuthenticatedContent(): JSX.Element {
-  return <a href="/api/auth/logout">Log out</a>;
+interface AuthenticatedContentProps {
+  user: UserContext["user"];
+}
+
+function AuthenticatedContent({
+  user,
+}: AuthenticatedContentProps): JSX.Element {
+  return (
+    <>
+      <span>Hi, {user?.nickname || "friend"}</span>
+      &nbsp;
+      <a href="/api/auth/logout">Log out</a>;
+    </>
+  );
 }
 
 function UnauthenticatedContent(): JSX.Element {
@@ -19,7 +32,11 @@ function UnauthenticatedContent(): JSX.Element {
 function AuthBar(): JSX.Element {
   const { user, isLoading } = useUser();
 
-  const content = user ? <AuthenticatedContent /> : <UnauthenticatedContent />;
+  const content = user ? (
+    <AuthenticatedContent user={user} />
+  ) : (
+    <UnauthenticatedContent />
+  );
 
   return (
     <nav>

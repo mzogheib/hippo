@@ -1,16 +1,26 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0, User } from "@auth0/auth0-react";
 
-function AuthenticatedContent(): JSX.Element {
+type AuthenticatedContentProps = {
+  user: User;
+};
+
+function AuthenticatedContent({
+  user,
+}: AuthenticatedContentProps): JSX.Element {
   const { logout } = useAuth0();
 
   return (
-    <button
-      onClick={() =>
-        logout({ logoutParams: { returnTo: window.location.href } })
-      }
-    >
-      Log out
-    </button>
+    <>
+      <span>Hi, {user.nickname || "friend"}</span>
+      &nbsp;
+      <button
+        onClick={() =>
+          logout({ logoutParams: { returnTo: window.location.href } })
+        }
+      >
+        Log out
+      </button>
+    </>
   );
 }
 
@@ -33,12 +43,13 @@ function UnauthenticatedContent(): JSX.Element {
 }
 
 function AuthBar(): JSX.Element {
-  const { user, isLoading, isAuthenticated } = useAuth0();
+  const { user, isLoading } = useAuth0();
 
-  console.log("user", user);
-  console.log("isAuthenticated", isAuthenticated);
-
-  const content = user ? <AuthenticatedContent /> : <UnauthenticatedContent />;
+  const content = user ? (
+    <AuthenticatedContent user={user} />
+  ) : (
+    <UnauthenticatedContent />
+  );
 
   return (
     <nav>
