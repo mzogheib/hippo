@@ -1,5 +1,5 @@
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { Auth0Provider } from "@auth0/auth0-react";
+import { Auth0Provider, AppState } from "@auth0/auth0-react";
 import AppHeading from "./components/AppHeading";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -16,6 +16,16 @@ function AppLayout(): JSX.Element {
     }
   }, [pathname]);
 
+  const handleAuthRedirectCallback = (appState?: AppState) => {
+    if (appState?.returnTo) {
+      navigate(appState.returnTo);
+      return;
+    }
+
+    // Removes the code and state query params
+    navigate("/home");
+  };
+
   return (
     <Auth0Provider
       domain="dev-qxah68iucyxmju34.us.auth0.com"
@@ -25,15 +35,7 @@ function AppLayout(): JSX.Element {
         audience: "http://localhost:4000",
         scope: "read:profile",
       }}
-      onRedirectCallback={(appState) => {
-        if (appState?.returnTo) {
-          navigate(appState.returnTo);
-          return;
-        }
-
-        // Removes the code and state query params
-        navigate("/home");
-      }}
+      onRedirectCallback={handleAuthRedirectCallback}
     >
       <AppHeading />
       <AuthBar />
