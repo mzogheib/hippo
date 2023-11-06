@@ -7,6 +7,7 @@ import { auth, requiredScopes } from "express-oauth2-jwt-bearer";
 const checkJwt = auth({
   audience: "http://localhost:4000",
   issuerBaseURL: `https://dev-qxah68iucyxmju34.us.auth0.com/`,
+  tokenSigningAlg: "RS256",
 });
 
 const checkScopes = requiredScopes("read:profile");
