@@ -33,7 +33,7 @@ First, create a `.env.local` file in the root directory with the following conte
 ```sh
 VITE_AUTH0_DOMAIN='replace with domain from Auth0 dashboard'
 VITE_AUTH0_CLIENT_ID='replace with app client id from Auth0 dashboard'
-VITE_AUTH0_AUDIENCE='replace with audience from Auth0 dashboard'
+VITE_AUTH0_AUDIENCE='replace with Profile API audience from Auth0 dashboard'
 ```
 
 Then run the dev server
