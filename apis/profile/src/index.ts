@@ -1,12 +1,15 @@
 import express from "express";
 import cors from "cors";
 import { auth, requiredScopes } from "express-oauth2-jwt-bearer";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 // Authorization middleware. When used, the Access Token must
 // exist and be verified against the Auth0 JSON Web Key Set.
 const checkJwt = auth({
-  audience: "http://localhost:4000",
-  issuerBaseURL: `https://dev-qxah68iucyxmju34.us.auth0.com/`,
+  audience: process.env.AUTH0_AUDIENCE,
+  issuerBaseURL: process.env.AUTH0_ISSUER_BASE_URL,
   tokenSigningAlg: "RS256",
 });
 
