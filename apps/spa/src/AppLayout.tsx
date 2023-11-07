@@ -28,11 +28,11 @@ function AppLayout(): JSX.Element {
 
   return (
     <Auth0Provider
-      domain="dev-qxah68iucyxmju34.us.auth0.com"
-      clientId="6xsI9n1DyjT3FaCDomx3UoBJrBuhBWvB"
+      domain={import.meta.env.VITE_AUTH0_DOMAIN}
+      clientId={import.meta.env.VITE_AUTH0_CLIENT_ID}
       authorizationParams={{
         redirect_uri: window.location.href,
-        audience: "http://localhost:4000",
+        audience: import.meta.env.VITE_AUTH0_AUDIENCE,
         scope: "openid profile read:all_data",
       }}
       onRedirectCallback={handleAuthRedirectCallback}
