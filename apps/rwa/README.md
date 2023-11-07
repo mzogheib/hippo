@@ -1,6 +1,17 @@
 ## Getting Started
 
-First, run the development server:
+First, create a `.env.local` file in the root directory with the following content
+
+```sh
+AUTH0_SECRET='use [openssl rand -hex 32] to generate a 32 bytes value'
+AUTH0_BASE_URL='replace with URL for this app'
+AUTH0_AUDIENCE='replace with audience from Auth0 dashboard'
+AUTH0_ISSUER_BASE_URL='replace with domain from Auth0 dashboard'
+AUTH0_CLIENT_ID='replace with app client id from Auth0 dashboard'
+AUTH0_CLIENT_SECRET='replace with app secret from Auth0 dashboard'
+```
+
+Then run the development server:
 
 ```bash
 yarn dev
