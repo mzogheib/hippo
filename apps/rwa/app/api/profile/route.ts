@@ -9,12 +9,23 @@ interface ErrorResponse {
   status: number;
 }
 
+const unauthorizedError = { code: "unauthorized", status: 401 };
+const unknownError = { code: "unknown", status: 500 };
+
 export const GET = withApiAuthRequired(
   async (): Promise<NextResponse<Profile | ErrorResponse>> => {
-    const { accessToken } = await getAccessToken();
+    let accessToken: string | undefined;
 
-    if (!accessToken)
-      return NextResponse.json({ code: "unauthorized", status: 401 });
+    try {
+      const result = await getAccessToken();
+      accessToken = result.accessToken;
+
+      if (!accessToken) {
+        throw new Error(JSON.stringify(unauthorizedError));
+      }
+    } catch {
+      return NextResponse.json(unauthorizedError);
+    }
 
     try {
       const data = await getProfile_({ accessToken });
@@ -26,7 +37,7 @@ export const GET = withApiAuthRequired(
         return NextResponse.json(errorPayload);
       }
 
-      return NextResponse.json({ code: "unkown", status: 500 });
+      return NextResponse.json(unknownError);
     }
   },
 );
