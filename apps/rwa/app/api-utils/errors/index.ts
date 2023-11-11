@@ -1,3 +1,7 @@
+/**
+ * @param code - a unique code classifying the error
+ * @param status - the HTTP error status
+ */
 export interface ErrorResponse {
   code: string;
   status: number;
