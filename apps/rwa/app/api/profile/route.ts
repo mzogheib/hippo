@@ -2,14 +2,8 @@ import { withApiAuthRequired, getAccessToken } from "@auth0/nextjs-auth0";
 import type { Profile } from "profile-service";
 import { NextResponse } from "next/server";
 import { getProfile } from "profile-service";
-
-interface ErrorResponse {
-  code: string;
-  status: number;
-}
-
-const unauthorizedError = { code: "unauthorized", status: 401 };
-const unknownError = { code: "unknown", status: 500 };
+import type { ErrorResponse } from "../../api-utils/errors";
+import { unauthorizedError, unknownError } from "../../api-utils/errors";
 
 export const GET = withApiAuthRequired(
   async (req): Promise<NextResponse<Profile | ErrorResponse>> => {
