@@ -36,6 +36,7 @@ function AppLayout(): JSX.Element {
         scope: "openid profile read:all_data",
       }}
       onRedirectCallback={handleAuthRedirectCallback}
+      useRefreshTokens={true}
     >
       <AppHeading />
       <AuthBar />
