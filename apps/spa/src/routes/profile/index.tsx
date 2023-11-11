@@ -1,3 +1,4 @@
+import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
 import { Profile, getProfile } from "profile-service";
 import { useEffect, useState } from "react";
 
@@ -6,13 +7,32 @@ function ProfileRoute(): JSX.Element {
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
+  const {
+    getAccessTokenSilently,
+    isLoading: isLoadingAuth,
+    isAuthenticated,
+  } = useAuth0();
+
   useEffect(() => {
+    if (isLoadingAuth || !isAuthenticated) return;
+
     const getProfile_ = async () => {
       setIsLoading(true);
       setIsError(false);
 
+      let accessToken: string;
+
       try {
-        const data = await getProfile();
+        accessToken = await getAccessTokenSilently();
+      } catch {
+        // TODO: log the user out so that they can log in again with a new token
+        setIsError(true);
+        setIsLoading(false);
+        return;
+      }
+
+      try {
+        const data = await getProfile({ accessToken });
 
         setProfileData(data);
       } catch (e) {
@@ -24,7 +44,7 @@ function ProfileRoute(): JSX.Element {
     };
 
     getProfile_();
-  }, []);
+  }, [isLoadingAuth, isAuthenticated]);
 
   return (
     <div>
@@ -39,4 +59,6 @@ function ProfileRoute(): JSX.Element {
   );
 }
 
-export default ProfileRoute;
+export default withAuthenticationRequired(ProfileRoute, {
+  onRedirecting: () => <div>Loading...</div>,
+});
