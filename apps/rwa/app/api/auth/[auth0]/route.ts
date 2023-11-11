@@ -5,7 +5,7 @@ import { handleAuth, handleLogin } from "@auth0/nextjs-auth0";
 export const GET = handleAuth({
   login: handleLogin({
     authorizationParams: {
-      scope: "openid profile read:all_data",
+      scope: "openid profile read:all_data offline_access",
     },
   }),
   signup: handleLogin({ authorizationParams: { screen_hint: "signup" } }),
