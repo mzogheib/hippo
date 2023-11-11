@@ -13,15 +13,16 @@ const unauthorizedError = { code: "unauthorized", status: 401 };
 const unknownError = { code: "unknown", status: 500 };
 
 export const GET = withApiAuthRequired(
-  async (): Promise<NextResponse<Profile | ErrorResponse>> => {
+  async (req): Promise<NextResponse<Profile | ErrorResponse>> => {
+    const res = new NextResponse();
     let accessToken: string | undefined;
 
     try {
-      const result = await getAccessToken();
+      const result = await getAccessToken(req, res);
       accessToken = result.accessToken;
 
       if (!accessToken) {
-        throw new Error(JSON.stringify(unauthorizedError));
+        throw new Error();
       }
     } catch {
       return NextResponse.json(unauthorizedError);
