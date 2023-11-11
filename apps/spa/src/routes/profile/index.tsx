@@ -20,7 +20,16 @@ function ProfileRoute(): JSX.Element {
       setIsLoading(true);
       setIsError(false);
 
-      const accessToken = await getAccessTokenSilently();
+      let accessToken: string;
+
+      try {
+        accessToken = await getAccessTokenSilently();
+      } catch {
+        // TODO: log the user out so that they can log in again with a new token
+        setIsError(true);
+        setIsLoading(false);
+        return;
+      }
 
       try {
         const data = await getProfile({ accessToken });
