@@ -1,9 +1,11 @@
+import Link from "next/link";
+
 function NavBar(): JSX.Element {
   return (
     <nav>
-      <a href="/home">Home</a>
+      <Link href="/home">Home</Link>
       &nbsp;
-      <a href="/profile">Profile</a>
+      <Link href="/profile">Profile</Link>
     </nav>
   );
 }
