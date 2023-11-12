@@ -1,7 +1,7 @@
 import { withApiAuthRequired, getAccessToken } from "@auth0/nextjs-auth0";
-import type { Profile } from "profile-service";
+import type { Profile } from "profile-service-sdk";
+import { getProfile } from "profile-service-sdk";
 import { NextResponse } from "next/server";
-import { getProfile } from "profile-service";
 import type { ErrorResponse } from "../../api-utils/errors";
 import { unauthorizedError, unknownError } from "../../api-utils/errors";
 

@@ -1,5 +1,5 @@
 import { withPageAuthRequired } from "@auth0/nextjs-auth0";
-import type { Profile } from "profile-service";
+import type { Profile } from "profile-service-sdk";
 import { http } from "../api-utils/http";
 
 async function ProfilePage(): Promise<JSX.Element> {

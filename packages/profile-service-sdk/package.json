@@ -1,5 +1,5 @@
 {
-  "name": "profile-service",
+  "name": "profile-service-sdk",
   "version": "0.0.0",
   "private": true,
   "main": "src/index.ts",
