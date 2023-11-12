@@ -18,8 +18,9 @@ This project was created with [Turborepo](https://turbo.build/) and includes the
 ### Packages
 
 - `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
+- `profile-service`: A library for interacting with the `profile` API
 - `tsconfig`: `tsconfig.json`s used throughout the monorepo
-- `profile-service`: A TypeScript library for interacting with the `profile` API
+- `ui-components`: A library of React UI components that can be used by the apps
 
 Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
 
