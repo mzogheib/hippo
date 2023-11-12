@@ -21,7 +21,7 @@ importers:
         specifier: latest
         version: 1.10.16
 
-  apis/profile:
+  apis/profile-service:
     dependencies:
       cors:
         specifier: ^2.8.5
