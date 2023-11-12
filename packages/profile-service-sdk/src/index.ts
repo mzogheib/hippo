@@ -1,3 +1,5 @@
+import { makeErrorPayload } from "./errors";
+
 const baseUrl = "http://localhost:4000";
 
 export const scopes = {
@@ -7,26 +9,6 @@ export const scopes = {
 export type Profile = {
   name: string;
   address: string;
-};
-
-const makeErrorPayload = (status: number) => {
-  switch (status) {
-    case 401:
-      return {
-        code: "profile-service-unauthorized",
-        status,
-      };
-    case 403:
-      return {
-        code: "profile-service-forbidden",
-        status,
-      };
-    default:
-      return {
-        code: "profile-service-unknown",
-        status,
-      };
-  }
 };
 
 type Params = {
