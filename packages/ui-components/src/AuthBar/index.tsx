@@ -36,7 +36,7 @@ function UnauthenticatedContent({
   );
 }
 
-export const AuthBar: React.FC<ComponentProps> = (props: ComponentProps) => {
+export function AuthBar(props: ComponentProps): JSX.Element {
   const { isAuthenticated, isLoading } = props;
 
   const content = isAuthenticated ? (
@@ -51,4 +51,4 @@ export const AuthBar: React.FC<ComponentProps> = (props: ComponentProps) => {
       {!isLoading ? content : null}
     </nav>
   );
-};
+}
