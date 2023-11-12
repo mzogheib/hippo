@@ -35,6 +35,9 @@ importers:
       express-oauth2-jwt-bearer:
         specifier: ^1.6.0
         version: 1.6.0
+      profile-service-sdk:
+        specifier: workspace:*
+        version: link:../../packages/profile-service-sdk
     devDependencies:
       '@tsconfig/recommended':
         specifier: ^1.0.3
