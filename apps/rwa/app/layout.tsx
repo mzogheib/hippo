@@ -4,7 +4,7 @@ import NavBar from "./components/NavBar";
 import "./globals.css";
 import AppHeading from "./components/AppHeading";
 import Footer from "./components/Footer";
-import AuthBar from "./components/AuthBar/index.tsx";
+import AuthBar from "./components/AuthBar";
 
 export default function RootLayout({
   children,

@@ -1,55 +1,22 @@
-import { useAuth0, User } from "@auth0/auth0-react";
-
-type AuthenticatedContentProps = {
-  user: User;
-};
-
-function AuthenticatedContent({
-  user,
-}: AuthenticatedContentProps): JSX.Element {
-  const { logout } = useAuth0();
-
-  return (
-    <>
-      <span>Hi, {user.nickname || "friend"}</span>
-      &nbsp;
-      <button onClick={() => logout()}>Log out</button>
-    </>
-  );
-}
-
-function UnauthenticatedContent(): JSX.Element {
-  const { loginWithRedirect } = useAuth0();
-
-  return (
-    <>
-      <button onClick={() => loginWithRedirect()}>Log In</button>
-      &nbsp;or&nbsp;
-      <button
-        onClick={() =>
-          loginWithRedirect({ authorizationParams: { screen_hint: "signup" } })
-        }
-      >
-        Sign up
-      </button>
-    </>
-  );
-}
+import { useAuth0 } from "@auth0/auth0-react";
+import { AuthBar as AuthBar_ } from "ui-components";
 
 function AuthBar(): JSX.Element {
-  const { user, isLoading } = useAuth0();
+  const { user, isAuthenticated, isLoading, loginWithRedirect, logout } =
+    useAuth0();
 
-  const content = user ? (
-    <AuthenticatedContent user={user} />
-  ) : (
-    <UnauthenticatedContent />
-  );
+  const handleSignup = () =>
+    loginWithRedirect({ authorizationParams: { screen_hint: "signup" } });
 
   return (
-    <nav>
-      {isLoading ? <span>Loading...</span> : null}
-      {!isLoading ? content : null}
-    </nav>
+    <AuthBar_
+      name={user?.nickname}
+      isAuthenticated={isAuthenticated}
+      isLoading={isLoading}
+      onLogin={loginWithRedirect}
+      onSignup={handleSignup}
+      onLogout={logout}
+    />
   );
 }
 
