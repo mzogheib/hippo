@@ -1,5 +1,9 @@
 const baseUrl = "http://localhost:4000";
 
+export const scopes = {
+  readAllData: "read:all_data",
+};
+
 export type Profile = {
   name: string;
   address: string;
