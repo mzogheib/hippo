@@ -1,48 +1,35 @@
 "use client";
 
-import type { UserContext } from "@auth0/nextjs-auth0/client";
 import { useUser } from "@auth0/nextjs-auth0/client";
-
-interface AuthenticatedContentProps {
-  user: UserContext["user"];
-}
-
-function AuthenticatedContent({
-  user,
-}: AuthenticatedContentProps): JSX.Element {
-  return (
-    <>
-      <span>Hi, {user?.nickname || "friend"}</span>
-      &nbsp;
-      <a href="/api/auth/logout">Log out</a>
-    </>
-  );
-}
-
-function UnauthenticatedContent(): JSX.Element {
-  return (
-    <>
-      <a href="/api/auth/login">Log in</a>
-      &nbsp;or&nbsp;
-      <a href="/api/auth/signup">Sign up</a>
-    </>
-  );
-}
+import { AuthBar as AuthBarUIComponents } from "ui-components";
+import { useRouter } from "next/navigation";
 
 function AuthBar(): JSX.Element {
   const { user, isLoading } = useUser();
 
-  const content = user ? (
-    <AuthenticatedContent user={user} />
-  ) : (
-    <UnauthenticatedContent />
-  );
+  const router = useRouter();
+
+  const handleLogin = (): void => {
+    router.push("/api/auth/login");
+  };
+
+  const handleLogout = (): void => {
+    router.push("/api/auth/logout");
+  };
+
+  const handleSignup = (): void => {
+    router.push("/api/auth/signup");
+  };
 
   return (
-    <nav>
-      {isLoading ? <span>Loading...</span> : null}
-      {!isLoading ? content : null}
-    </nav>
+    <AuthBarUIComponents
+      isAuthenticated={Boolean(user)}
+      isLoading={isLoading}
+      name={user?.nickname ?? undefined}
+      onLogin={handleLogin}
+      onLogout={handleLogout}
+      onSignup={handleSignup}
+    />
   );
 }
 
