@@ -1,5 +1,5 @@
 import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
-import { Profile, getProfile } from "profile-service";
+import { Profile, getProfile } from "profile-service-sdk";
 import { useEffect, useState } from "react";
 
 function ProfileRoute(): JSX.Element {

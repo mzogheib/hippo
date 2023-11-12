@@ -5,6 +5,7 @@ import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import { useEffect } from "react";
 import AuthBar from "./components/AuthBar/index.tsx";
+import { scopes } from "profile-service-sdk";
 
 function AppLayout(): JSX.Element {
   const navigate = useNavigate();
@@ -26,6 +27,8 @@ function AppLayout(): JSX.Element {
     navigate("/home");
   };
 
+  const scope = `openid profile ${scopes.readAllData}`;
+
   return (
     <Auth0Provider
       domain={import.meta.env.VITE_AUTH0_DOMAIN}
@@ -33,7 +36,7 @@ function AppLayout(): JSX.Element {
       authorizationParams={{
         redirect_uri: window.location.href,
         audience: import.meta.env.VITE_AUTH0_AUDIENCE,
-        scope: "openid profile read:all_data",
+        scope,
       }}
       onRedirectCallback={handleAuthRedirectCallback}
       useRefreshTokens={true}

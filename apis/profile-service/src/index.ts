@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import { auth, requiredScopes } from "express-oauth2-jwt-bearer";
 import dotenv from "dotenv";
+import { scopes } from "profile-service-sdk";
 
 dotenv.config();
 
@@ -13,7 +14,7 @@ const checkJwt = auth({
   tokenSigningAlg: "RS256",
 });
 
-const checkScopes = requiredScopes("read:all_data");
+const checkScopes = requiredScopes(scopes.readAllData);
 
 const app = express();
 
