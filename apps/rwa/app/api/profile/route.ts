@@ -2,8 +2,8 @@ import { withApiAuthRequired, getAccessToken } from "@auth0/nextjs-auth0";
 import type { Profile } from "profile-service-sdk";
 import { getProfile } from "profile-service-sdk";
 import { NextResponse } from "next/server";
-import type { ErrorResponse } from "../../api-utils/errors";
-import { unauthorizedError, unknownError } from "../../api-utils/errors";
+import type { ErrorResponse } from "../../../src/api-utils/errors";
+import { unauthorizedError, unknownError } from "../../../src/api-utils/errors";
 
 export const GET = withApiAuthRequired(
   async (req): Promise<NextResponse<Profile | ErrorResponse>> => {

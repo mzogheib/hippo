@@ -1,10 +1,10 @@
 import type { PropsWithChildren } from "react";
 import { UserProvider } from "@auth0/nextjs-auth0/client";
-import NavBar from "./components/NavBar";
+import NavBar from "../src/components/NavBar";
 import "./globals.css";
-import AppHeading from "./components/AppHeading";
-import Footer from "./components/Footer";
-import AuthBar from "./components/AuthBar";
+import AppHeading from "../src/components/AppHeading";
+import Footer from "../src/components/Footer";
+import AuthBar from "../src/components/AuthBar";
 
 export default function RootLayout({
   children,
