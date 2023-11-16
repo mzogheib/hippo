@@ -6,6 +6,8 @@ function NavBar(): JSX.Element {
       <Link href="/home">Home</Link>
       &nbsp;
       <Link href="/profile">Profile</Link>
+      &nbsp;
+      <Link href="/session">Session</Link>
     </nav>
   );
 }
