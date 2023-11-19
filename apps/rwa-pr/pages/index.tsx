@@ -1,11 +1,17 @@
 import Head from "next/head";
-import Image from "next/image";
 import { Inter } from "next/font/google";
+import Link from "next/link";
 import styles from "../styles/Home.module.css";
+import { useAppState } from "../components/app-state";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Root(): JSX.Element {
+  const { state, dispatch } = useAppState();
+
+  // eslint-disable-next-line no-console -- just testing
+  console.log("state", state);
+
   return (
     <>
       <Head>
@@ -20,93 +26,15 @@ export default function Root(): JSX.Element {
             Get started by editing&nbsp;
             <code className={styles.code}>pages/index.tsx</code>
           </p>
-          <div>
-            <a
-              href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              By{" "}
-              <Image
-                alt="Vercel Logo"
-                className={styles.vercelLogo}
-                height={24}
-                priority
-                src="/vercel.svg"
-                width={100}
-              />
-            </a>
-          </div>
-        </div>
-
-        <div className={styles.center}>
-          <Image
-            alt="Next.js Logo"
-            className={styles.logo}
-            height={37}
-            priority
-            src="/next.svg"
-            width={180}
-          />
-        </div>
-
-        <div className={styles.grid}>
-          <a
-            className={styles.card}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            rel="noopener noreferrer"
-            target="_blank"
+          <Link href="/home">Home</Link>
+          <button
+            onClick={() => {
+              dispatch({ type: "SET_AUTHENTICATED" });
+            }}
+            type="button"
           >
-            <h2>
-              Docs <span>-&gt;</span>
-            </h2>
-            <p>
-              Find in-depth information about Next.js features and&nbsp;API.
-            </p>
-          </a>
-
-          <a
-            className={styles.card}
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <h2>
-              Learn <span>-&gt;</span>
-            </h2>
-            <p>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
-            </p>
-          </a>
-
-          <a
-            className={styles.card}
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <h2>
-              Templates <span>-&gt;</span>
-            </h2>
-            <p>
-              Discover and deploy boilerplate example Next.js&nbsp;projects.
-            </p>
-          </a>
-
-          <a
-            className={styles.card}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            <h2>
-              Deploy <span>-&gt;</span>
-            </h2>
-            <p>
-              Instantly deploy your Next.js site to a shareable URL
-              with&nbsp;Vercel.
-            </p>
-          </a>
+            Log in
+          </button>
         </div>
       </main>
     </>

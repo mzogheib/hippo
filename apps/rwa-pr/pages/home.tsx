@@ -1,10 +1,16 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "../styles/Home.module.css";
+import { useAppState } from "../components/app-state";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home(): JSX.Element {
+  const { state } = useAppState();
+
+  // eslint-disable-next-line no-console -- just testing
+  console.log("state", state);
+
   return (
     <>
       <Head>
