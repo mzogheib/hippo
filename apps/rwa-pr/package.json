@@ -21,6 +21,6 @@
     "eslint": "^8",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*",
-    "typescript": "^5"
+    "typescript": "^5.0.2"
   }
 }
