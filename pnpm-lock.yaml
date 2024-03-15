@@ -64,8 +64,8 @@ importers:
   apps/rwa:
     dependencies:
       '@auth0/nextjs-auth0':
-        specifier: ^3.2.0
-        version: 3.2.0(next@13.4.19)
+        specifier: ^3.5.0
+        version: 3.5.0(next@13.4.19)
       next:
         specifier: ^13.4.19
         version: 13.4.19(react-dom@18.2.0)(react@18.2.0)
@@ -272,14 +272,14 @@ packages:
     resolution: {integrity: sha512-xdA65Z/U7++Y7L9Uwh8Q8OVOs6qgFz+fb7GAzHFjpr1icO37B//xdzLXm7ZRgA19RWrsNe1nme3h896igJSvvw==}
     dev: false
 
-  /@auth0/nextjs-auth0@3.2.0(next@13.4.19):
-    resolution: {integrity: sha512-8vdoqEF+RfAAdG9O2r8QbRs95LraDYhDGlfTzQdGg5CYTBGUWO34EZOB9bZr0SgqnqaO9Qa4lgcrffsYPcvywg==}
+  /@auth0/nextjs-auth0@3.5.0(next@13.4.19):
+    resolution: {integrity: sha512-uFZEE2QQf1zU+jRK2fwqxRQt+WSqDPYF2tnr7d6BEa7b6L6tpPJ3evzoImbWSY1a7gFdvD7RD/Rvrsx7B5CKVg==}
     engines: {node: '>=16'}
     peerDependencies:
       next: '>=10'
     dependencies:
       '@panva/hkdf': 1.1.1
-      cookie: 0.5.0
+      cookie: 0.6.0
       debug: 4.3.4
       joi: 17.11.0
       jose: 4.15.4
@@ -2147,6 +2147,11 @@ packages:
 
   /cookie@0.5.0:
     resolution: {integrity: sha512-YZ3GUyn/o8gfKJlnlX7g7xq4gyO6OSuhGPKaaGssGB2qgDUS0gPgtTvoyZLTt9Ab6dC4hfc9dV5arkvc/OCmrw==}
+    engines: {node: '>= 0.6'}
+    dev: false
+
+  /cookie@0.6.0:
+    resolution: {integrity: sha512-U71cyTamuh1CRNCfpGY6to28lxvNwPG4Guz/EVjgf3Jmzv0vlDp1atT9eS5dDjMYHucpHbWns6Lwf3BKz6svdw==}
     engines: {node: '>= 0.6'}
     dev: false
 
