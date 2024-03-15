@@ -106,9 +106,15 @@ importers:
 
   apps/rwa-pr:
     dependencies:
+      '@auth0/auth0-react':
+        specifier: ^2.2.3
+        version: 2.2.3(react-dom@18.2.0)(react@18.2.0)
       next:
         specifier: 13.5.6
         version: 13.5.6(react-dom@18.2.0)(react@18.2.0)
+      profile-service-sdk:
+        specifier: workspace:*
+        version: link:../../packages/profile-service-sdk
       react:
         specifier: ^18.2.0
         version: 18.2.0
